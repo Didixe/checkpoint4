@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PurchaseController!{% endblock %}
+
+{% block body %}
+<main>
+    <div>
+        <h1>La boutique</h1>
+
+        <table>
+            <thead>
+            <tr>
+
+                <th>Instrument</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for purchase in purchases %}
+                <tr>
+
+                    <td>{{ purchase.getName() }}</td>
+                    <td>{{ purchase.getTuning() }}</td>
+                    <td>{{ purchase.getNoteNumber() }}</td>
+                    <td>{{ purchase.getPicture() }}</td>
+                    <td>{{ purchase.getPrice() }}</td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a class="btn btn-secondary" href="{{ path('app_comment') }}">Nous contacter</a>
+    </div>
+</main>
+{% endblock %}
