@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductionController!{% endblock %}
+
+{% block body %}
+<main>
+
+    <h1 class="title">Fabrication sur mesure</h1>
+
+    <p>Découvrez l'harmonie personnalisée avec nos Handpans sur mesure !
+        Choisissez votre gamme, la couleur, le nombre de notes et la fréquence
+        pour créer l'instrument de vos rêves.
+    </p>
+
+    <p>Composez votre handpan nous vous contacterons</p>
+
+    <form method="post">
+        {{ form_start(form) }}
+
+        <div>
+            {{ form_row(form.client.Name) }}
+            {{ form_row(form.client.Email) }}
+            {{ form_row(form.client.other_information) }}
+        </div>
+
+        <div>
+
+            {{ form_row(form.production.Materials) }}
+            {{ form_row(form.production.Tuning) }}
+            {{ form_row(form.production.Note_Number) }}
+{#            {{ form_row(form.production.Price) }}#}
+        </div>
+
+        <button type="submit" class="btn btn-secondary">Envoyer</button>
+
+        {{ form_end(form) }}
+    </form>
+
+</main>
+{% endblock %}
