@@ -1,20 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CommentController!{% endblock %}
+{% block title %}Contact{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<main>
+    <div>
+        <h1>Nous contacter</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        <p>Une question? Une commande? Un mot d’amour?</p>
+        <p>Nous ne sommes pas toujours à l’atelier, c’est pourquoi à l’heure actuelle les visites sont sur RDV.</p>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Dell/Wild/checkpoint/checkpoint4bis/src/Controller/CommentController.php'|file_link(0) }}">src/Controller/CommentController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Dell/Wild/checkpoint/checkpoint4bis/templates/comment/index.html.twig'|file_link(0) }}">templates/comment/index.html.twig</a></code></li>
-    </ul>
-</div>
+        <form method="post">
+            {{ form_start(form) }}
+
+            <div>
+                {{ form_row(form.client.Name) }}
+                {{ form_row(form.client.Email) }}
+{#                {{ form_row(form.client.other_information) }}#}
+            </div>
+
+           <div>
+               {{ form_row(form.comment.object) }}
+               {{ form_row(form.comment.Message) }}
+           </div>
+            <button type="submit" class="btn btn-secondary">Envoyer</button>
+
+            {{ form_end(form) }}
+        </form>
+    </div>
+</main>
 {% endblock %}

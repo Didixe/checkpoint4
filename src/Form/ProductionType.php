@@ -9,6 +9,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ProductionType extends AbstractType
 {
@@ -26,6 +27,9 @@ class ProductionType extends AbstractType
                 'attr' => [
                     'class' => 'inputPictures'
                 ],
+                'constraints' => [
+                    new NotBlank(['message' => 'Merci de remplir le champ Matériaux'])
+                ],
             ])
             ->add('Tuning', ChoiceType::class, [
                 'label' => 'Accordage',
@@ -36,6 +40,9 @@ class ProductionType extends AbstractType
                 'expanded' => true,
                 'attr' => [
                     'class' => 'input'
+                ],
+                'constraints' => [
+                    new NotBlank(['message' => 'Merci de remplir le champ Accordage'])
                 ],
             ])
             ->add('Note_Number', ChoiceType::class, [
@@ -51,6 +58,9 @@ class ProductionType extends AbstractType
                 'expanded' => true,
                 'attr' => [
                     'class' => 'input'
+                ],
+                'constraints' => [
+                    new NotBlank(['message' => 'Merci de remplir le champ Nombre de notes'])
                 ],
             ])
 //            ->add('Price')
