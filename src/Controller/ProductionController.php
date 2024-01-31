@@ -20,40 +20,6 @@ class ProductionController extends AbstractController
         EntityManagerInterface $entityManager
     ): Response
     {
-//        $production = new Production();
-//        $client = new Client();
-//
-//        $productionForm = $this->createForm(ProductionType::class, $production);
-//        $clientForm = $this->createForm(ClientType::class, $client);
-//
-//        $productionForm->handleRequest($request);
-//        $clientForm->handleRequest($request);
-//
-//        if ($productionForm->isSubmitted() && $productionForm->isValid()) {
-//            // Logique de traitement pour le formulaire de production
-//
-//            // Persistez le client s'il n'est pas déjà persisté
-//            $selectedClient = $productionForm->get('client')->getData();
-//            if (!$entityManager->contains($selectedClient)) {
-//                $entityManager->persist($selectedClient);
-//            }
-//
-//            // Associez le client persisté à l'entité $production
-//            $production->setClient($selectedClient);
-//
-//            // Persistez et flush l'entité $production
-//            $entityManager->persist($production);
-//            $entityManager->flush();
-//
-//            return $this->redirectToRoute('app_home');
-//        }
-//
-//        return $this->render('production/index.html.twig', [
-//            'controller_name' => 'ProductionController',
-//            'productionForm' => $productionForm->createView(),
-//            'clientForm' => $clientForm->createView(),
-//        ]);
-//    }
         $production = new Production();
         $client = new Client();
 

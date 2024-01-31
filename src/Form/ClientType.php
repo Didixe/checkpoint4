@@ -35,12 +35,12 @@ class ClientType extends AbstractType
                     'class' => 'input'
                 ],
             ])
-            ->add('other_information', TextareaType::class, [
-                'label' => 'Autres informations',
-                'attr' => [
-                    'class' => 'input'
-                ],
-            ])
+//            ->add('other_information', TextareaType::class, [
+//                'label' => 'Autres informations',
+//                'attr' => [
+//                    'class' => 'input'
+//                ],
+//            ])
         ;
     }
 

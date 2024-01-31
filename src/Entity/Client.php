@@ -21,7 +21,7 @@ class Client
     #[ORM\Column(length: 255)]
     private ?string $Name = null;
 
-    #[ORM\Column(length: 500)]
+    #[ORM\Column(length: 500,  nullable: true)]
     private ?string $other_information = null;
 
     #[ORM\OneToMany(mappedBy: 'client', targetEntity: Production::class)]
