@@ -31,7 +31,7 @@ class Instrument
     #[ORM\Column(length: 255)]
     private ?string $Price = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $Status = null;
 
     #[ORM\ManyToOne(inversedBy: 'Instrument')]

@@ -1,19 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RentalController!{% endblock %}
+{% block title %}Location{% endblock %}
 
 {% block body %}
 
-    <h1 class="title">Fabrication sur mesure</h1>
+    <h1 class="title">Location</h1>
 
-    <p>Découvrez l'harmonie personnalisée avec nos Handpans sur mesure !
-        Choisissez votre gamme, la couleur, le nombre de notes et la fréquence
-        pour créer l'instrument de vos rêves.
+    <h2>Principes de fonctionnement :</h2>
+
+    <p>Nous avons 2 gammes disponibles à la location (D Amara – F Equinox).
+        Le prix mensuel de la location est de 50€ TTC.
+        Il y a un minimum de 3 mois d’engagement.
+        La caution est de 1300€.Vous avez la possibilité d’échanger l’instrument
+        quand vous le souhaitez.Une housse de transport est fournie avec l’instrument.
+        La location ne peut être faite que par remise en main propre à l’atelier.
     </p>
 
-    <p>Composez votre handpan nous vous contacterons</p>
+    <p>Vous êtes intéressés? Faites le nous savoir!Envoyez-nous un mail en nous indiquant
+        quelle gamme vous intéresse et nous vous recontacterons dès que nous aurons
+        un instrument disponible!
+    </p>
 
-
+    <a class="btn btn-secondary" href="{{ path('app_comment') }}">Nous contacter</a>
 
 
 {% endblock %}
