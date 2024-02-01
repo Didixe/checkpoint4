@@ -39,7 +39,7 @@ class ProductionType extends AbstractType
                 ],
                 'expanded' => true,
                 'attr' => [
-                    'class' => 'input'
+                    'class' => 'inputPictures'
                 ],
                 'constraints' => [
                     new NotBlank(['message' => 'Merci de remplir le champ Accordage'])
@@ -57,7 +57,7 @@ class ProductionType extends AbstractType
                 ],
                 'expanded' => true,
                 'attr' => [
-                    'class' => 'input'
+                    'class' => 'inputPictures'
                 ],
                 'constraints' => [
                     new NotBlank(['message' => 'Merci de remplir le champ Nombre de notes'])

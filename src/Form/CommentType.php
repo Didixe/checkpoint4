@@ -29,11 +29,15 @@ class CommentType extends AbstractType
                 'constraints' => [
                     new NotBlank(['message' => 'Merci de remplir le champ Objet'])
                 ],
+                'attr' => [
+                    'class' => 'input input-width'
+                ],
                 ])
             ->add('Message', TextareaType::class, [
                 'label' => 'Votre Message',
                 'attr' => [
-                    'class' => 'input'
+                    'class' => 'input input-width',
+                    'rows' => 6,
                 ],
                 'constraints' => [
                     new NotBlank(['message' => 'Merci de remplir le champ Message'])

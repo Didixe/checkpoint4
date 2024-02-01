@@ -50,7 +50,7 @@ class InstrumentType extends AbstractType
                 'delete_label' => 'Supprimer l\'image ?',
                 'constraints' => [
                     new File([
-                        'maxSize' => '1M',
+                        'maxSize' => '2M',
                         'mimeTypes' => ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'],
                     ]),
                 ],
