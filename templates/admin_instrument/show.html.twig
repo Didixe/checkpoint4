@@ -3,7 +3,10 @@
 {% block title %}Instrument{% endblock %}
 
 {% block body %}
-    <h1>Instrument</h1>
+<main class="column">
+    <h1 class="title">Instrument</h1>
+
+    <div class="form">
 
     <table class="table">
         <tbody>
@@ -41,10 +44,12 @@
             </tr>
         </tbody>
     </table>
+    {{ include('admin_instrument/_delete_form.html.twig') }}
+    </div>
+
 
     <a href="{{ path('app_admin_instrument_index') }}">retour à la liste</a>
 
     <a href="{{ path('app_admin_instrument_edit', {'id': instrument.id}) }}">Modifier</a>
-
-    {{ include('admin_instrument/_delete_form.html.twig') }}
+</main>
 {% endblock %}

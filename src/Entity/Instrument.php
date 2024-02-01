@@ -35,7 +35,7 @@ class Instrument
     private ?string $picture = null;
 
     #[Vich\UploadableField(mapping: 'picture', fileNameProperty: 'picture')]
-    #[Assert\File(maxSize: '1M', mimeTypes: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'])]
+    #[Assert\File(maxSize: '2M', mimeTypes: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'])]
     private ?File $pictureFile = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]

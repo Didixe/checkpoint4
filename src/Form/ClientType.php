@@ -22,7 +22,7 @@ class ClientType extends AbstractType
                     new NotBlank(['message' => 'Merci de remplir le champ Email'])
                 ],
                 'attr' => [
-                    'class' => 'input'
+                    'class' => 'input input-width'
                 ],
 
             ])
@@ -32,7 +32,7 @@ class ClientType extends AbstractType
                     new NotBlank(['message' => 'Merci de remplir le champ Email'])
                 ],
                 'attr' => [
-                    'class' => 'input'
+                    'class' => 'input input-width'
                 ],
             ])
 //            ->add('other_information', TextareaType::class, [
