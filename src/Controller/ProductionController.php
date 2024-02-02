@@ -38,18 +38,14 @@ class ProductionController extends AbstractController
             $clientData = $form->get('client')->getData();
             $productionData = $form->get('production')->getData();
 
-            // Persistez le client s'il n'est pas déjà persisté
             if (!$entityManager->contains($clientData)) {
                 $entityManager->persist($clientData);
             }
 
-            // Associez le client persisté à l'entité $production
             $productionData->setClient($clientData);
 
-            // Persistez et flush l'entité $production
             $entityManager->persist($productionData);
             $entityManager->flush();
-
 
             return $this->redirectToRoute('app_home');
         }

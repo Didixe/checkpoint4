@@ -58,10 +58,6 @@ body {
     position: relative;
 }
 
-input {
-    width: 50%;
-}
-
 form, .form {
 display: flex;
 flex-direction: column;
