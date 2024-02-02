@@ -1,6 +1,6 @@
-Maquette : https://www.figma.com/file/tLRdpcDnjbxXkGzpqnXqGx/Untitled?type=design&mode=design&t=cPdLgFDteTbtwOxC-0
-User stories : https://trello.com/b/Xy9NSg8I/mistral-pan
-BDD : https://excalidraw.com/#room=712fe22eebdde72cc671,vDQlTJevtLWbUHjKHeQ8aQ
+1. Maquette : https://www.figma.com/file/tLRdpcDnjbxXkGzpqnXqGx/Untitled?type=design&mode=design&t=cPdLgFDteTbtwOxC-0
+2. User stories : https://trello.com/b/Xy9NSg8I/mistral-pan
+3. BDD : https://excalidraw.com/#room=712fe22eebdde72cc671,vDQlTJevtLWbUHjKHeQ8aQ
 
 
 ### Install
