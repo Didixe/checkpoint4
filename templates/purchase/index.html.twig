@@ -1,34 +1,53 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PurchaseController!{% endblock %}
+{% block title %}Boutique{% endblock %}
 
 {% block body %}
 <main class="column">
 
-        <h1 class="title">La boutique</h1>
+    <h1 class="title">La boutique</h1>
 
-        <table>
-            <thead>
-            <tr>
+    <h2 class="h2">Instrument</h2>
 
-                <th>Instrument</th>
+    <div class=" blockPurchase">
+        {% for instrument in instruments %}
+            <div class="blockBuy">
+                <div class="instrumentText">
+                    <p class="instrumentName">{{ instrument.getName() }} - {{ instrument.getNoteNumber() }}</p>
+                    <p class="instrumentTuning">{{ instrument.getTuning() }}</p>
+                </div>
+                <img class="picturesBuy" src="{{ vich_uploader_asset(instrument) }}" alt="picture">
+                <div class="instrumentPriceRight">
+                    <p class="instrumentPrice">{{ instrument.getPrice() }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 
-            </tr>
-            </thead>
-            <tbody>
-            {% for purchase in purchases %}
-                <tr>
+{#        <table>#}
+{#            <thead>#}
+{#            <tr>#}
 
-                    <td>{{ purchase.getName() }}</td>
-                    <td>{{ purchase.getTuning() }}</td>
-                    <td>{{ purchase.getNoteNumber() }}</td>
-                    <td>{{ purchase.getPicture() }}</td>
-                    <td>{{ purchase.getPrice() }}</td>
+{#                <th class="h2">Instrument</th>#}
 
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+{#            </tr>#}
+{#            </thead>#}
+{#            <tbody class="allIntrument">#}
+{#            {% for purchase in purchases %}#}
+{#            {% for instrument in instruments %}#}
+{#                <tr class="blockBuy">#}
+{#                    <div>#}
+{#                        <td class="instrumentName">{{ instrument.getName() }} - {{ instrument.getNoteNumber() }}</td>#}
+{#    #}{#                    <td class="instrumentNote">{{ instrument.getNoteNumber() }}</td>#}
+{#                        <td class="instrumentTuning">{{ instrument.getTuning() }}</td>#}
+{#                    </div>#}
+{#                    <td class="instrumentPicture"><img class="picturesBuy" src="{{ vich_uploader_asset(instrument) }}" alt="picture"></td>#}
+{#                    <td>{{ purchase.getPicture() }}</td>#}
+{#                    <td class="instrumentPrice">{{ instrument.getPrice() }}</td>#}
+{#                </tr>#}
+{#            {% endfor %}#}
+{#            </tbody>#}
+{#        </table>#}
 
         <a class="btn btn-secondary contact" href="{{ path('app_comment') }}">Nous contacter</a>
 

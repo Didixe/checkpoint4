@@ -1,5 +1,10 @@
 <nav>
     <div class="navbar">
+        {% if app.user %}
+            <div class="linkAdmin">
+                <a class="btn btn-secondary btn-admin" href="{{ path('app_admin_instrument_index') }}">Liste des instruments</a>
+            </div>
+        {% endif %}
         <a href="{{ path('app_home') }}">
             <img class="logo" src="{{ asset('images/MistralLogov.png') }}" alt="Logo">
         </a>
