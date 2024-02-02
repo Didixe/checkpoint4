@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductionController!{% endblock %}
+
+{% block body %}
+<main class="column">
+    <div class="align">
+
+    <h1 class="title">Fabrication sur mesure</h1>
+
+    <p class="categoryBoxText">Découvrez l'harmonie personnalisée avec nos Handpans sur mesure !
+        Choisissez votre gamme, la couleur, le nombre de notes et la fréquence
+        pour créer l'instrument de vos rêves.
+    </p>
+
+    <p class="categoryBoxText">Composez votre handpan nous vous contacterons</p>
+
+    <form method="post">
+        {{ form_start(form) }}
+
+        <div>
+            {{ form_row(form.client.Name) }}
+            {{ form_row(form.client.Email) }}
+{#            {{ form_row(form.client.other_information) }}#}
+        </div>
+
+        <div>
+            {{ form_row(form.production.Materials) }}
+            {{ form_row(form.production.Tuning) }}
+            {{ form_row(form.production.Note_Number) }}
+{#            {{ form_row(form.production.Price) }}#}
+        </div>
+
+        <button type="submit" class="btn btn-secondary">Envoyer</button>
+
+        {{ form_end(form) }}
+    </form>
+
+        <a class="link" href="{{ path('app_home') }}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5"/>
+            </svg>
+            Retour
+        </a>
+
+    </div>
+</main>
+{% endblock %}

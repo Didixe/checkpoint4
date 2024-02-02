@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+    <main class="column">
+
+        <h1 class="title">Nous contacter</h1>
+
+        <p class="mt-1 w-50">Une question? Une commande? Un mot d’amour?</p>
+        <p class="mt-1 w-50">Nous ne sommes pas toujours à l’atelier, c’est pourquoi à l’heure actuelle les visites sont sur RDV.</p>
+
+        <form method="post">
+            {{ form_start(form) }}
+
+            <div>
+                {{ form_row(form.client.Name) }}
+                {{ form_row(form.client.Email) }}
+{#                {{ form_row(form.client.other_information) }}#}
+            </div>
+
+           <div>
+               {{ form_row(form.comment.object) }}
+               {{ form_row(form.comment.Message) }}
+           </div>
+            <button type="submit" class="btn btn-secondary">Envoyer</button>
+
+            {{ form_end(form) }}
+        </form>
+
+        <a class="link" href="{{ path('app_home') }}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5"/>
+            </svg>
+            Retour
+        </a>
+</main>
+{% endblock %}

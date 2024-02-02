@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Instrument index{% endblock %}
+
+{% block body %}
+<main class="column">
+    <h1 class="title">Instrument index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Materials</th>
+                <th>Tuning</th>
+                <th>Note_Number</th>
+                <th>Picture</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for instrument in instruments %}
+            <tr>
+                <td>{{ instrument.id }}</td>
+                <td>{{ instrument.Name }}</td>
+                <td>{{ instrument.Materials }}</td>
+                <td>{{ instrument.Tuning }}</td>
+                <td>{{ instrument.NoteNumber }}</td>
+                <td>{{ instrument.Picture }}</td>
+                <td>{{ instrument.Price }}</td>
+                <td>{{ instrument.Status }}</td>
+                <td>
+                    <a href="{{ path('app_admin_instrument_show', {'id': instrument.id}) }}">Vue</a>
+                    <a href="{{ path('app_admin_instrument_edit', {'id': instrument.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_instrument_new') }}">Ajouter un nouvel instrument</a>
+</main>
+{% endblock %}

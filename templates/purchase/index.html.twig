@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Boutique{% endblock %}
+
+{% block body %}
+<main class="column">
+
+    <h1 class="title">La boutique</h1>
+
+    <h2 class="h2">Instrument</h2>
+
+    <div class=" blockPurchase">
+        {% for instrument in instruments %}
+            <div class="blockBuy">
+                <div class="instrumentText">
+                    <p class="instrumentName">{{ instrument.getName() }} - {{ instrument.getNoteNumber() }}</p>
+                    <p class="instrumentTuning">{{ instrument.getTuning() }}</p>
+                </div>
+                <img class="picturesBuy" src="{{ vich_uploader_asset(instrument) }}" alt="picture">
+                <div class="instrumentPriceRight">
+                    <p class="instrumentPrice">{{ instrument.getPrice() }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{#        <table>#}
+{#            <thead>#}
+{#            <tr>#}
+
+{#                <th class="h2">Instrument</th>#}
+
+{#            </tr>#}
+{#            </thead>#}
+{#            <tbody class="allIntrument">#}
+{#            {% for purchase in purchases %}#}
+{#            {% for instrument in instruments %}#}
+{#                <tr class="blockBuy">#}
+{#                    <div>#}
+{#                        <td class="instrumentName">{{ instrument.getName() }} - {{ instrument.getNoteNumber() }}</td>#}
+{#    #}{#                    <td class="instrumentNote">{{ instrument.getNoteNumber() }}</td>#}
+{#                        <td class="instrumentTuning">{{ instrument.getTuning() }}</td>#}
+{#                    </div>#}
+{#                    <td class="instrumentPicture"><img class="picturesBuy" src="{{ vich_uploader_asset(instrument) }}" alt="picture"></td>#}
+{#                    <td>{{ purchase.getPicture() }}</td>#}
+{#                    <td class="instrumentPrice">{{ instrument.getPrice() }}</td>#}
+{#                </tr>#}
+{#            {% endfor %}#}
+{#            </tbody>#}
+{#        </table>#}
+
+        <a class="btn btn-secondary contact" href="{{ path('app_comment') }}">Nous contacter</a>
+
+    <a class="link" href="{{ path('app_home') }}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5"/>
+        </svg>
+        Retour
+    </a>
+</main>
+{% endblock %}
