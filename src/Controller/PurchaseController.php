@@ -15,11 +15,13 @@ class PurchaseController extends AbstractController
     public function index(PurchaseRepository $purchaseRepository, InstrumentRepository $instrumentRepository): Response
     {
 
-        $purchases = $instrumentRepository->findAll();
+//        $purchases = $instrumentRepository->findAll();
+        $instruments = $instrumentRepository->findAll();
 
         return $this->render('purchase/index.html.twig', [
             'controller_name' => 'PurchaseController',
-            'purchases' => $purchases,
+//            'purchases' => $purchases,
+            'instruments' => $instruments,
         ]);
     }
 }
