@@ -15,6 +15,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[Route('/admin/instrument')]
 class AdminInstrumentController extends AbstractController
 {
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/', name: 'app_admin_instrument_index', methods: ['GET'])]
     public function index(InstrumentRepository $instrumentRepository): Response
     {

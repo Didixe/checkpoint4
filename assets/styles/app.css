@@ -401,3 +401,10 @@ p.instrumentName {
     margin: 1rem;
     width: 100%;
 }
+
+.linknav {
+    display: flex;
+    flex-direction: row;
+    width: 80vh;
+    justify-content: space-around;
+}

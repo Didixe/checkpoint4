@@ -1,8 +1,13 @@
 <nav>
     <div class="navbar">
         {% if app.user %}
-            <div class="linkAdmin">
-                <a class="btn btn-secondary btn-admin" href="{{ path('app_admin_instrument_index') }}">Liste des instruments</a>
+            <div class="linknav">
+                <div class="linkAdmin">
+                    <a class="btn btn-secondary btn-admin" href="{{ path('app_admin_instrument_index') }}">Liste des instruments</a>
+                </div>
+                <div class="linkAdmin">
+                    <a class="btn btn-secondary btn-admin" href="{{ path('app_admin_comment_index') }}">Liste des commentaires</a>
+                </div>
             </div>
         {% endif %}
         <a href="{{ path('app_home') }}">
