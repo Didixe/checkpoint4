@@ -12,8 +12,11 @@ body {
 }
 
 .title{
-    margin-top: 5%;
+    margin-top: 10%;
     text-align: center;
+    @media screen and (width > 572px) {
+        margin-top: 5%;
+    }
 }
 
 .center{
@@ -23,8 +26,11 @@ body {
 }
 
 .pictureHome{
-    width: 70%;
+    width: 90%;
     margin: 1rem;
+    @media screen and (width > 572px) {
+        width: 70%;
+    }
 }
 
 .navbar {
@@ -34,11 +40,14 @@ body {
 
 .logo {
     position: absolute;
-    width: 10%;
+    width: 25%;
     top: 78%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
+    @media screen and (width > 572px) {
+        width: 10%;
+    }
 }
 
 .menu-icon {
@@ -60,15 +69,16 @@ align-items: center;
 background-color: var(--primary-color);
 border-radius: 1.25rem;
 padding:  1.25rem 1.25rem 0 1.25rem ;
-width: 50%;
+
 margin: 1rem;
+    @media screen and (width > 572px) {
+        width: 50%;
+    }
 }
 
 label {
     display: block;
-    /*margin-bottom: 0.5rem;*/
     margin: 1rem 5px 0.5rem 0;
-    /*margin-right: 5px;*/
 }
 
 input {
@@ -85,19 +95,49 @@ input {
 .categoryPicture{
     width: 300px;
     height: 200px;
+    @media screen and (width > 572px) {
+        width: 300px;
+        height: 200px;
+    }
+
 }
 
 .category.b {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
+    @media screen and (width > 572px) {
+        flex-direction: row-reverse;
+    }
 }
 
 .category {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    width: 50%;
     margin: 1rem;
+    flex-direction: column;
+    @media screen and (width > 572px) {
+        flex-direction: row;
+        width: 50%;
+    }
+}
+
+.textCategory{
+    @media screen and (width > 572px) {
+        width: 75% !important;
+    }
+}
+
+.categoryBoxText{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 2rem;
+    margin-right: 2rem;;
+    @media screen and (width > 572px) {
+        margin: 0.5rem!important;
+        width: 50%!important;
+    }
 }
 
 .poste {
@@ -107,7 +147,6 @@ input {
 }
 
 .btn-secondary {
-    /*--bs-btn-bg:var(--primary-color);*/
     --bs-btn-bg:var(--secondary-color);
     --bs-btn-color: black;
     --bs-btn-border-color: none;
@@ -214,8 +253,6 @@ input {
     color: #5383d3;
 }
 
-/* Footer links */
-
 .footer-distributed .footer-links {
     color: #ffffff;
     margin: 20px 0 12px;
@@ -236,14 +273,11 @@ input {
     margin: 0;
 }
 
-/* Footer Center */
-
 .footer-distributed .footer-center {
     width: 35%;
 }
 
 .footer-distributed .footer-center i {
-    /*background-color: #33383b;*/
     color: #ffffff;
     font-size: 25px;
     width: 38px;
@@ -278,8 +312,6 @@ input {
     color: #5383d3;
     text-decoration: none;
 }
-
-/* Footer Right */
 
 .footer-distributed .footer-right {
     width: 20%;
@@ -343,7 +375,6 @@ input {
 
 svg.bi.bi-power{
     color: white;
-    /*color: black;*/
     margin-left: -10px;
     margin-top: -15px;
 }
@@ -355,9 +386,12 @@ svg.bi.bi-power{
 
 .blockPurchase {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
+    @media screen and (width > 572px) {
+        flex-direction: row;
+    }
 }
 
 .blockBuy {
@@ -405,6 +439,19 @@ p.instrumentName {
 .linknav {
     display: flex;
     flex-direction: row;
-    width: 80vh;
-    justify-content: space-around;
+    width: 90vh;
+    justify-content: flex-start;
+}
+
+div#form_production_Materials,
+div#form_production_Tuning,
+div#form_production_Note_Number
+{
+    align-content: center;
+    display: flex;
+    justify-content: center;
+}
+
+.linkAdmin {
+    margin-left: 25px;
 }
