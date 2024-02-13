@@ -15,6 +15,8 @@ import PurchasePicture  from './images/boutique.jpg';
 import RentalPicture  from './images/location.jpg';
 import ProductionPicture  from './images/fabrication.png';
 import LogoFooter  from './images/Logowhite.png';
+import Home  from './images/Mistral_pans.png';
+import LogoWhite  from './images/Logo_white.png';
 
 let html;
 html = ` < img src = "${HomePictureDefault}" alt = "Home Picture Default" > `;
@@ -23,5 +25,7 @@ html = ` < img src = "${PurchasePicture}" alt = "Picture HandPan" > `;
 html = ` < img src = "${RentalPicture}" alt = "Picture HandPan" > `;
 html = ` < img src = "${ProductionPicture}" alt = "Picture contractor" > `;
 html = ` < img src = "${LogoFooter}" alt = "logo" > `;
+html = ` < img src = "${Home}" alt = "Home page" > `;
+html = ` < img src = "${LogoWhite}" alt = "Logo white" > `;
 
 // console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');

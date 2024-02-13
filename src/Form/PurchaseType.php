@@ -17,7 +17,7 @@ class PurchaseType extends AbstractType
             ->add('Delivery_date')
             ->add('client', EntityType::class, [
                 'class' => client::class,
-'choice_label' => 'id',
+                'choice_label' => 'id',
             ])
         ;
     }

@@ -6,38 +6,47 @@
 <main>
     <div>
 
-        <h1 class="title">BIENVENUE CHEZ MISTRAL PANS!</h1>
         <div class="center">
-                <img class="pictureHome" src="{{ asset('images/HandPanHome.jpg') }}" alt="Home Picture">
+{#                <img class="pictureHome" src="{{ asset('images/HandPanHome.jpg') }}" alt="Home Picture">#}
+            <img class="FirstPictures" src="{{ asset('images/Mistral_pans.png') }}" alt="home page">
         </div>
+        <h1 class="bandeau title">BIENVENUE CHEZ MISTRAL PANS!</h1>
         <div class="poste">
             <div class="category">
-                <img class="categoryPicture" src="{{ asset('images/fabrication.png') }}" alt="Picture contractor">
+                    <a class="PicturesHover" href="{{ path('app_production') }}"><img class="categoryPicture" src="{{ asset('images/fabrication.png') }}" alt="Picture contractor"></a>
+{#                    <img class="categoryPicture" src="{{ asset('images/fabrication.png') }}" alt="Picture contractor">#}
+
                 <div class="categoryBoxText">
                     <h2 class="h2">Fabrication sur mesure</h2>
                     <p class="textCategory">Choisissez la fréquence (432/440 hz), le nombre de notes, la gamme la couleur et recevez votre handpan.
                     </p>
-                    <a class="btn btn-secondary" href="{{ path('app_production') }}">Création</a>
+{#                    <a class="btn btn-secondary" href="{{ path('app_production') }}">Création</a>#}
                 </div>
             </div>
 
             <div class="category b">
-                <img class="categoryPicture" src="{{ asset('images/boutique.jpg') }}" alt="Picture HandPan">
-                <div class="categoryBoxText">
+
+                    <a class="PicturesHover" href="{{ path('app_purchase') }}"><img class="categoryPicture" src="{{ asset('images/boutique.jpg') }}" alt="Picture HandPan"></a>
+{#                    <img class="categoryPicture" src="{{ asset('images/boutique.jpg') }}" alt="Picture HandPan">#}
+
+                    <div class="categoryBoxText">
                     <h2 class="h2">Nos dispos</h2>
                     <p class="textCategory">Explorez nos handpans disponibles, choisissez votre mélodie préférée et laissez la musique commencer.
                     </p>
-                    <a class="btn btn-secondary" href="{{ path('app_purchase') }}">La boutique</a>
+{#                    <a class="btn btn-secondary" href="{{ path('app_purchase') }}">La boutique</a>#}
                 </div>
             </div>
 
             <div class="category">
-                <img class="categoryPicture" src="{{ asset('images/location.jpg') }}" alt="Picture HandPan">
-                <div class="categoryBoxText ">
+
+                    <a class="PicturesHover" href="{{ path('app_rental') }}"><img class="categoryPicture" src="{{ asset('images/location.jpg') }}" alt="Picture HandPan"></a>
+{#                    <img class="categoryPicture" src="{{ asset('images/location.jpg') }}" alt="Picture HandPan">#}
+
+                    <div class="categoryBoxText ">
                     <h2 class="h2">Location</h2>
                     <p class="textCategory">Une envie pour quelques jour ? nous vous proposons ici de loué nos handpan
                     </p>
-                    <a class="btn btn-secondary" href="{{ path('app_rental') }}">Location</a>
+{#                    <a class="btn btn-secondary" href="{{ path('app_rental') }}">Location</a>#}
                 </div>
             </div>
         </div>
