@@ -20,18 +20,22 @@ class Instrument
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Name = null;
+    #[Assert\NotBlank]
+    private ?string $name = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Materials = null;
+    #[Assert\NotBlank]
+    private ?string $materials = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Tuning = null;
+    #[Assert\NotBlank]
+    private ?string $tuning = null;
 
     #[ORM\Column]
-    private ?int $Note_Number = null;
+    #[Assert\NotBlank]
+    private ?int $note_Number = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $picture = null;
 
     #[Vich\UploadableField(mapping: 'picture', fileNameProperty: 'picture')]
@@ -42,10 +46,11 @@ class Instrument
     private ?\DateTimeInterface $updatedAt = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Price = null;
+    #[Assert\NotBlank]
+    private ?string $price = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Status = null;
+    private ?string $status = null;
 
     #[ORM\ManyToOne(inversedBy: 'Instrument')]
     private ?Rental $rental = null;
@@ -60,48 +65,48 @@ class Instrument
 
     public function getName(): ?string
     {
-        return $this->Name;
+        return $this->name;
     }
 
-    public function setName(string $Name): static
+    public function setName(string $name): static
     {
-        $this->Name = $Name;
+        $this->name = $name;
 
         return $this;
     }
 
     public function getMaterials(): ?string
     {
-        return $this->Materials;
+        return $this->materials;
     }
 
-    public function setMaterials(string $Materials): static
+    public function setMaterials(string $materials): static
     {
-        $this->Materials = $Materials;
+        $this->materials = $materials;
 
         return $this;
     }
 
     public function getTuning(): ?string
     {
-        return $this->Tuning;
+        return $this->tuning;
     }
 
-    public function setTuning(string $Tuning): static
+    public function setTuning(string $tuning): static
     {
-        $this->Tuning = $Tuning;
+        $this->tuning = $tuning;
 
         return $this;
     }
 
     public function getNoteNumber(): ?int
     {
-        return $this->Note_Number;
+        return $this->note_Number;
     }
 
-    public function setNoteNumber(int $Note_Number): static
+    public function setNoteNumber(int $note_Number): static
     {
-        $this->Note_Number = $Note_Number;
+        $this->note_Number = $note_Number;
 
         return $this;
     }
@@ -111,7 +116,7 @@ class Instrument
         return $this->picture;
     }
 
-    public function setPicture(string $picture): static
+    public function setPicture(?string $picture): static
     {
         $this->picture = $picture;
 
@@ -123,7 +128,7 @@ class Instrument
         return $this->pictureFile;
     }
 
-    public function setPictureFile(File $image = null): static
+    public function setPictureFile(?File $image = null): static
     {
         $this->pictureFile = $image;
 
@@ -148,24 +153,24 @@ class Instrument
 
     public function getPrice(): ?string
     {
-        return $this->Price;
+        return $this->price;
     }
 
-    public function setPrice(string $Price): static
+    public function setPrice(string $price): static
     {
-        $this->Price = $Price;
+        $this->price = $price;
 
         return $this;
     }
 
     public function getStatus(): ?string
     {
-        return $this->Status;
+        return $this->status;
     }
 
-    public function setStatus(string $Status): static
+    public function setStatus(string $status): static
     {
-        $this->Status = $Status;
+        $this->status = $status;
 
         return $this;
     }

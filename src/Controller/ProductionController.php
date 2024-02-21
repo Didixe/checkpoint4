@@ -11,13 +11,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Services\EmailService;
 
 class ProductionController extends AbstractController
 {
     #[Route('/production', name: 'app_production')]
     public function productionAction(
         Request $request,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
+        EmailService $emailService
     ): Response
     {
         $production = new Production();
@@ -47,6 +49,9 @@ class ProductionController extends AbstractController
             $entityManager->persist($productionData);
             $entityManager->flush();
 
+            $emailService->sendingProduction($clientData, $productionData);
+
+            $this->addFlash('success', 'Votre demande de production a bien été prise en compte. Nous vous recontacterons dans les plus brefs délais.');
             return $this->redirectToRoute('app_home');
         }
 

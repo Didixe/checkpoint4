@@ -4,26 +4,35 @@
 
 {% block body %}
 <main class="column">
-    <h1 class="title">Comment index</h1>
+    <div class="container">
 
-    <table class="table">
+    <h1 class="title titleAdmin">Comment index</h1>
+
+    <input class="form-control mb-4" id="tableSearch" type="text"
+           placeholder=" recherche">
+
+{#    <table class="table">#}
+    <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>Numéro</th>
+                <th>Client Email</th>
                 <th>Object</th>
                 <th>Message</th>
                 <th>actions</th>
             </tr>
         </thead>
-        <tbody>
+{#        <tbody>#}
+        <tbody id="myTable">
         {% for comment in comments %}
             <tr>
                 <td>{{ comment.id }}</td>
+                <td>{{ comment.client.email }}</td>
                 <td>{{ comment.object }}</td>
                 <td>{{ comment.Message }}</td>
                 <td>
                     <a href="{{ path('app_admin_comment_show', {'id': comment.id}) }}">Vue</a>
-                    <a href="{{ path('app_admin_comment_edit', {'id': comment.id}) }}">Modifier</a>
+{#                    <a href="{{ path('app_admin_comment_edit', {'id': comment.id}) }}">Modifier</a>#}
                 </td>
             </tr>
         {% else %}
@@ -35,5 +44,41 @@
     </table>
 
     <a href="{{ path('app_admin_comment_new') }}">Ajouter un nouveau commentaire</a>
+    </div>
 </main>
+
+{#{% endblock %}#}
+
+    <script>
+        document.getElementById('tableSearch').addEventListener('input', function() {
+            var input, filter, table, tr, td, i, j, txtValue, found;
+            input = document.getElementById("tableSearch");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                found = false;
+                for (j = 0; j < tr[i].getElementsByTagName("td").length - 2; j++) { // Ignorer la dernière colonne (Message)
+                    td = tr[i].getElementsByTagName("td")[j];
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            found = true;
+                            break;
+                        }
+                    }
+                }
+                if (found) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        });
+    </script>
+{#    <script src="{{ asset('assets/js/search.js') }}"></script>#}
+
 {% endblock %}
+
+

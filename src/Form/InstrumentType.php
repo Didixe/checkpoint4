@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class InstrumentType extends AbstractType
@@ -24,11 +25,17 @@ class InstrumentType extends AbstractType
                 'attr' => [
                     'class' => 'input'
                 ],
+                'constraints' => [
+                    new NotBlank(['message' => 'Merci de remplir le champ "Nom du Handpan"'])
+                ],
             ])
             ->add('Materials', TextType::class, [
                 'label' => 'Quel matériel a été utilisé ?',
                 'attr' => [
                     'class' => 'input'
+                ],
+                'constraints' => [
+                    new NotBlank(['message' => 'Merci de remplir le champ "Matériel"'])
                 ],
             ])
             ->add('Tuning', TextType::class, [
@@ -36,11 +43,17 @@ class InstrumentType extends AbstractType
                 'attr' => [
                     'class' => 'input'
                 ],
+                'constraints' => [
+                    new NotBlank(['message' => 'Merci de remplir le champ "Fréquence"'])
+                ],
             ])
             ->add('Note_Number', TextType::class, [
                 'label' => 'Combien de notes ?',
                 'attr' => [
                     'class' => 'input'
+                ],
+                'constraints' => [
+                    new NotBlank(['message' => 'Merci de remplir le champ "Nombre de notes"'])
                 ],
             ])
             ->add('pictureFile', VichFileType::class, [
@@ -59,6 +72,9 @@ class InstrumentType extends AbstractType
                 'label' => 'Quel prix ?',
                 'attr' => [
                     'class' => 'input'
+                ],
+                'constraints' => [
+                    new NotBlank(['message' => 'Merci de remplir le champ "Prix"'])
                 ],
             ])
             ->add('Status', ChoiceType::class, [

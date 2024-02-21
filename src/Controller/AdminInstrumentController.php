@@ -27,10 +27,6 @@ class AdminInstrumentController extends AbstractController
     #[Route('/new', name: 'app_admin_instrument_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
-//        if (!$this->isGranted('ROLE_ADMIN')) {
-//            $this->addFlash('danger', 'Vous devez être connecté en tant qu\'administrateur.');
-//            return $this->redirectToRoute('app_login');
-//        }
 
         $instrument = new Instrument();
         $form = $this->createForm(InstrumentType::class, $instrument);
@@ -66,6 +62,9 @@ class AdminInstrumentController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($form->get('pictureFile')->getData() === null) {
+                $instrument->setPicture(null);
+            }
             $entityManager->flush();
 
             return $this->redirectToRoute('app_admin_instrument_index', [], Response::HTTP_SEE_OTHER);
