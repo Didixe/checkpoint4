@@ -7,9 +7,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
  * This file will be included onto the page via the importmap() Twig function,
  * which should already be in your base.html.twig.
  */
+
 import './controllers/search_controller.js';
 import './js/search.js';
 import './styles/app.css';
+import './styles/footer.css';
+import './styles/form.css';
+import './styles/general.css';
+import './styles/home.css';
+import './styles/navbar.css';
+import './styles/purchassePage.css';
 
 import HomePictureDefault  from './images/HandPanHome.jpg';
 import LogoNav  from './images/MistralLogov.png';
