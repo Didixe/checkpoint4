@@ -1,5 +1,4 @@
 :root {
-  /*--primary-color: #D9D9D9;*/
   --primary-color: black;
   --secondary-color: #D0B173 ;
   --ternary-color : #D9D9D9;
@@ -70,4 +69,3 @@ body {
 .h2{
   text-align: center;
 }
-

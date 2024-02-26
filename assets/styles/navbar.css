@@ -10,9 +10,13 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
-  @media screen and (width > 572px) {
-    top: 120%;
-    width: 10%;
+  @media screen and (min-width: 573px) and (max-width: 999px) {
+    top: 100%;
+    width: 150px;
+  }
+  @media screen and (min-width: 1000px) {
+    top: 135%;
+    width: 200px;
   }
 }
 

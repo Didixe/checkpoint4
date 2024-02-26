@@ -30,7 +30,7 @@ input {
 
 .btn-secondary {
   --bs-btn-bg:var(--secondary-color);
-  --bs-btn-color: black;
+  --bs-btn-color:var(--primary-color);
   --bs-btn-border-color: none;
 }
 

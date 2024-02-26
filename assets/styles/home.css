@@ -1,7 +1,7 @@
 .pictureHome{
   width: 90%;
   margin: 1rem;
-  @media screen and (width > 572px) {
+  @media screen and (min-width: 1000px) {
     width: 70%;
   }
 }
@@ -9,7 +9,11 @@
 .categoryPicture{
   width: 300px;
   height: 200px;
-  @media screen and (width > 572px) {
+  @media screen and (min-width: 573px) and (max-width: 999px) {
+    width: 450px;
+    height: 300px;
+  }
+  @media screen and (min-width: 1000px) {
     width: 600px;
     height: 400px;
   }
@@ -26,18 +30,17 @@
 .PicturesHover::before {
   content: '';
   position: absolute;
-  bottom: 0; /* Positionnement au bas de l'élément parent */
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: 0; /* Commencez avec une hauteur de 0 */
-  /*background-color: rgba(255, 165, 0, 0.5);*/
+  height: 0;
   background-color: #d0b173b5;
   z-index: 1;
   transition: height 1s ease; /* Animation de transition pour une apparition douce */
 }
 
 .PicturesHover:hover::before {
-  height: 100%; /* Augmentez la hauteur pour afficher complètement le voile */
+  height: 100%; /* Augmente la hauteur pour afficher complètement le voile */
 }
 
 .PicturesHover::after {
@@ -46,7 +49,7 @@
   top: 100%; /* Positionné au bas de l'élément parent */
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 2em;
+  font-size: 5em;
   color: white;
   z-index: 2;
   opacity: 0; /* Commencez avec une opacité de 0 */
@@ -61,7 +64,7 @@
 .category.b {
   display: flex;
   flex-direction: column;
-  @media screen and (width > 572px) {
+  @media screen and (min-width: 1000px) {
     flex-direction: row-reverse;
   }
 }
@@ -72,7 +75,7 @@
   align-items: center;
   margin: 1rem;
   flex-direction: column;
-  @media screen and (width > 572px) {
+  @media screen and (min-width: 1000px) {
     flex-direction: row;
     width: 50%;
   }
@@ -86,12 +89,12 @@
 }
 
 .categoryBoxText{
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 2rem;
-  margin-right: 2rem;;
-  @media screen and (width > 572px) {
+  margin: 2rem 3rem 0rem 2rem;
+  @media screen and (min-width: 1000px) {
     margin: 1.5rem;
     width: 60%;
   }
@@ -103,13 +106,39 @@
   align-items: center;
 }
 
-.FirstPictures {
+.firstPictures {
   width: 100vw;
   top: auto;
-  /*height: 37vw;*/
   border-radius: 0;
   object-fit: cover;
-  @media screen and (width > 572px) {
+  @media screen and (min-width: 1000px) {
     height: 37vw;
+  }
+}
+
+.mobileSymbol{
+  display: block;
+  @media screen and (min-width: 1000px) {
+    display: none;
+  }
+}
+
+.desktopSymbol{
+  display: none;
+  @media screen and (min-width: 1000px) {
+    display: block;
+  }
+}
+
+.categoryBoxText:hover .mobileSymbol {
+  animation: moveUp 0.3s forwards; /* Déclenche l'animation au survol */
+}
+
+@keyframes moveUp {
+  from {
+    transform: translateY(0); /* Position de départ */
+  }
+  to {
+    transform: translateY(-25px); /* Position finale */
   }
 }
