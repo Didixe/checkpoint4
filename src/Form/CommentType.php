@@ -44,11 +44,6 @@ class CommentType extends AbstractType
                 ],
 
             ])
-//            ->add('client', EntityType::class, [
-//                'class' => Client::class,
-//                'choice_label' => 'id',
-//                'mapped' => false,
-//            ])
         ;
     }
 

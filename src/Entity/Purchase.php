@@ -21,15 +21,10 @@ class Purchase
 
     #[ORM\ManyToOne(inversedBy: 'purchases')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?client $client = null;
+    private ?Client $client = null;
 
-    #[ORM\OneToMany(mappedBy: 'purchase', targetEntity: Instrument::class)]
-    private Collection $Instrument;
-
-    public function __construct()
-    {
-        $this->Instrument = new ArrayCollection();
-    }
+    #[ORM\ManyToOne(inversedBy: 'purchases')]
+    private ?Instrument $instrument = null;
 
     public function getId(): ?int
     {
@@ -48,44 +43,27 @@ class Purchase
         return $this;
     }
 
-    public function getClient(): ?client
+    public function getClient(): ?Client
     {
         return $this->client;
     }
 
-    public function setClient(?client $client): static
+    public function setClient(?Client $client): static
     {
         $this->client = $client;
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, Instrument>
-     */
-    public function getInstrument(): Collection
+
+    public function getInstrument(): ?Instrument
     {
-        return $this->Instrument;
+        return $this->instrument;
     }
 
-    public function addInstrument(Instrument $instrument): static
+    public function setInstrument(?Instrument $instrument): static
     {
-        if (!$this->Instrument->contains($instrument)) {
-            $this->Instrument->add($instrument);
-            $instrument->setPurchase($this);
-        }
-
-        return $this;
-    }
-
-    public function removeInstrument(Instrument $instrument): static
-    {
-        if ($this->Instrument->removeElement($instrument)) {
-            // set the owning side to null (unless already changed)
-            if ($instrument->getPurchase() === $this) {
-                $instrument->setPurchase(null);
-            }
-        }
+        $this->instrument = $instrument;
 
         return $this;
     }

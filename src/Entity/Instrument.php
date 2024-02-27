@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\InstrumentRepository;
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
@@ -52,11 +54,17 @@ class Instrument
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $status = null;
 
-    #[ORM\ManyToOne(inversedBy: 'Instrument')]
-    private ?Rental $rental = null;
+    #[ORM\OneToMany(mappedBy: 'instrument', targetEntity: Rental::class)]
+    private Collection $rentals;
 
-    #[ORM\ManyToOne(inversedBy: 'Instrument')]
-    private ?Purchase $purchase = null;
+    #[ORM\OneToMany(mappedBy: 'instrument', targetEntity: Purchase::class)]
+    private Collection $purchases;
+
+    public function __construct()
+    {
+        $this->rentals = new ArrayCollection();
+        $this->purchases = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -175,26 +183,62 @@ class Instrument
         return $this;
     }
 
-    public function getRental(): ?Rental
+    /**
+     * @return Collection<int, Rental>
+     */
+    public function getRentals(): Collection
     {
-        return $this->rental;
+        return $this->rentals;
     }
 
-    public function setRental(?Rental $rental): static
+    public function addRental(Rental $rental): static
     {
-        $this->rental = $rental;
+        if (!$this->rentals->contains($rental)) {
+            $this->rentals->add($rental);
+            $rental->setInstrument($this);
+        }
 
         return $this;
     }
 
-    public function getPurchase(): ?Purchase
+    public function removeRental(Rental $rental): static
     {
-        return $this->purchase;
+        if ($this->rentals->removeElement($rental)) {
+            // set the owning side to null (unless already changed)
+            if ($rental->getInstrument() === $this) {
+                $rental->setInstrument(null);
+            }
+        }
+
+        return $this;
     }
 
-    public function setPurchase(?Purchase $purchase): static
+    /**
+     * @return Collection<int, Purchase>
+     */
+    public function getPurchases(): Collection
     {
-        $this->purchase = $purchase;
+        return $this->purchases;
+    }
+
+    public function addPurchase(Purchase $purchase): static
+    {
+        if (!$this->purchases->contains($purchase)) {
+            $this->purchases->add($purchase);
+            $purchase->setInstrument($this);
+        }
+
+        return $this;
+    }
+
+    public function removePurchase(Purchase $purchase): static
+    {
+        if ($this->purchases->removeElement($purchase)) {
+            // set the owning side to null (unless already changed)
+            if ($purchase->getInstrument() === $this) {
+                $purchase->setInstrument(null);
+            }
+        }
 
         return $this;
     }

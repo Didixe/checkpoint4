@@ -15,10 +15,12 @@ class Client
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 180)]
+    #[Assert\NotBlank]
     private ?string $Email = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 80)]
+    #[Assert\NotBlank]
     private ?string $Name = null;
 
     #[ORM\Column(length: 500,  nullable: true)]

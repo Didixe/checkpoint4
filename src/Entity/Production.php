@@ -14,16 +14,20 @@ class Production
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\NotBlank]
     private ?string $Name = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
     private ?string $Materials = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
     private ?string $Tuning = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $Note_Number = null;
+    #[ORM\Column]
+    #[Assert\NotBlank]
+    private ?int $Note_Number = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $Price = null;

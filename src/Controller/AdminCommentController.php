@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Comment;
-use App\Form\Comment1Type;
 use App\Repository\CommentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,26 +23,6 @@ class AdminCommentController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_admin_comment_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $comment = new Comment();
-        $form = $this->createForm(Comment1Type::class, $comment);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($comment);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('app_admin_comment_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('admin_comment/new.html.twig', [
-            'comment' => $comment,
-            'form' => $form,
-        ]);
-    }
-
     #[Route('/{id}', name: 'app_admin_comment_show', methods: ['GET'])]
     public function show(Comment $comment): Response
     {
@@ -51,25 +30,6 @@ class AdminCommentController extends AbstractController
             'comment' => $comment,
         ]);
     }
-
-
-//    #[Route('/{id}/edit', name: 'app_admin_comment_edit', methods: ['GET', 'POST'])]
-//    public function edit(Request $request, Comment $comment, EntityManagerInterface $entityManager): Response
-//    {
-//        $form = $this->createForm(Comment1Type::class, $comment);
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
-//            $entityManager->flush();
-//
-//            return $this->redirectToRoute('app_admin_comment_index', [], Response::HTTP_SEE_OTHER);
-//        }
-//
-//        return $this->render('admin_comment/edit.html.twig', [
-//            'comment' => $comment,
-//            'form' => $form,
-//        ]);
-//    }
 
     #[Route('/{id}', name: 'app_admin_comment_delete', methods: ['POST'])]
     public function delete(Request $request, Comment $comment, EntityManagerInterface $entityManager): Response
