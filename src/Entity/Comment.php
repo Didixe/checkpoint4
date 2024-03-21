@@ -14,9 +14,11 @@ class Comment
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
     private ?string $object = null;
 
     #[ORM\Column(length: 500)]
+    #[Assert\NotBlank]
     private ?string $Message = null;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]

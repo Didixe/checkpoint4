@@ -4,6 +4,7 @@
 
 {% block body %}
 <main class="column">
+    <div class="title bandeau nav">  </div>
 
     <h1 class="title">La boutique</h1>
 
@@ -23,31 +24,6 @@
             </div>
         {% endfor %}
     </div>
-
-{#        <table>#}
-{#            <thead>#}
-{#            <tr>#}
-
-{#                <th class="h2">Instrument</th>#}
-
-{#            </tr>#}
-{#            </thead>#}
-{#            <tbody class="allIntrument">#}
-{#            {% for purchase in purchases %}#}
-{#            {% for instrument in instruments %}#}
-{#                <tr class="blockBuy">#}
-{#                    <div>#}
-{#                        <td class="instrumentName">{{ instrument.getName() }} - {{ instrument.getNoteNumber() }}</td>#}
-{#    #}{#                    <td class="instrumentNote">{{ instrument.getNoteNumber() }}</td>#}
-{#                        <td class="instrumentTuning">{{ instrument.getTuning() }}</td>#}
-{#                    </div>#}
-{#                    <td class="instrumentPicture"><img class="picturesBuy" src="{{ vich_uploader_asset(instrument) }}" alt="picture"></td>#}
-{#                    <td>{{ purchase.getPicture() }}</td>#}
-{#                    <td class="instrumentPrice">{{ instrument.getPrice() }}</td>#}
-{#                </tr>#}
-{#            {% endfor %}#}
-{#            </tbody>#}
-{#        </table>#}
 
         <a class="btn btn-secondary contact" href="{{ path('app_comment') }}">Nous contacter</a>
 

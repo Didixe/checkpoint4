@@ -25,13 +25,8 @@ class Rental
     #[ORM\ManyToOne(inversedBy: 'rentals')]
     private ?Client $client = null;
 
-    #[ORM\OneToMany(mappedBy: 'rental', targetEntity: Instrument::class)]
-    private Collection $Instrument;
-
-    public function __construct()
-    {
-        $this->Instrument = new ArrayCollection();
-    }
+    #[ORM\ManyToOne(inversedBy: 'rentals')]
+    private ?Instrument $instrument = null;
 
     public function getId(): ?int
     {
@@ -74,32 +69,15 @@ class Rental
         return $this;
     }
 
-    /**
-     * @return Collection<int, Instrument>
-     */
-    public function getInstrument(): Collection
+
+    public function getInstrument(): ?Instrument
     {
-        return $this->Instrument;
+        return $this->instrument;
     }
 
-    public function addInstrument(Instrument $instrument): static
+    public function setInstrument(?instrument $instrument): static
     {
-        if (!$this->Instrument->contains($instrument)) {
-            $this->Instrument->add($instrument);
-            $instrument->setRental($this);
-        }
-
-        return $this;
-    }
-
-    public function removeInstrument(Instrument $instrument): static
-    {
-        if ($this->Instrument->removeElement($instrument)) {
-            // set the owning side to null (unless already changed)
-            if ($instrument->getRental() === $this) {
-                $instrument->setRental(null);
-            }
-        }
+        $this->instrument = $instrument;
 
         return $this;
     }

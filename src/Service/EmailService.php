@@ -29,4 +29,18 @@ class EmailService{
 
         $this->mailer->send($email);
     }
+
+    public function sendingProduction($client, $production){
+
+        $email = (new Email())
+            ->from('wilder@wildcodeschool.fr')
+            ->to('wilder@wildcodeschool.fr')
+            ->subject('Nouvelle demande enregistrée')
+            ->html($this->twig->render('email/production_notification.html.twig', [
+                'client' => $client,
+                'production' => $production,
+            ]));
+
+        $this->mailer->send($email);
+    }
 }

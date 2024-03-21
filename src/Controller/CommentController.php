@@ -21,7 +21,6 @@ class CommentController extends AbstractController
     public function index(
         Request $request,
         EntityManagerInterface $entityManager,
-        MailerInterface $mailer,
         EmailService $emailService
     ): Response
     {
@@ -52,20 +51,9 @@ class CommentController extends AbstractController
             $entityManager->persist($commentData);
             $entityManager->flush();
 
-//            $email = (new Email())
-//                ->from('wilder@wildcodeschool.fr')
-//                ->to('wilder@wildcodeschool.fr')
-//                ->subject('Nouveau commentaire enregistré')
-//                ->html($this->renderView('email/comment_notification.html.twig', [
-//                    'client' => $clientData,
-//                    'comment' => $commentData,
-//                ]));
-//
-//            $mailer->send($email);
-
             $emailService->sendingNotification($clientData, $commentData);
 
-
+            $this->addFlash('success', 'Votre commentaire a bien été pris en compte. Nous vous recontacterons dans les plus brefs délais.');
             return $this->redirectToRoute('app_home');
         }
 

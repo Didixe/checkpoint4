@@ -16,7 +16,7 @@ class InstrumentFixtures extends Fixture
         $instrument->setNoteNumber(7);
         $instrument->setMaterials('Acier nitruré');
         $instrument->setTuning('440Hz');
-        $instrument->setPicture('');
+        $instrument->setPicture(null);
         $instrument->setPrice('800 €');
         $manager->persist($instrument);
         $manager->flush();
@@ -27,7 +27,7 @@ class InstrumentFixtures extends Fixture
         $instrument->setNoteNumber(8);
         $instrument->setMaterials('Acier nitruré');
         $instrument->setTuning('440Hz');
-        $instrument->setPicture('');
+        $instrument->setPicture(null);
         $instrument->setPrice('890 €');
         $manager->persist($instrument);
         $manager->flush();
@@ -38,7 +38,7 @@ class InstrumentFixtures extends Fixture
         $instrument->setNoteNumber(9);
         $instrument->setMaterials('Acier nitruré');
         $instrument->setTuning('440Hz');
-        $instrument->setPicture('');
+        $instrument->setPicture(null);
         $instrument->setPrice('1000 €');
         $manager->persist($instrument);
         $manager->flush();
@@ -49,7 +49,7 @@ class InstrumentFixtures extends Fixture
         $instrument->setNoteNumber(10);
         $instrument->setMaterials('Acier nitruré');
         $instrument->setTuning('440Hz');
-        $instrument->setPicture('');
+        $instrument->setPicture(null);
         $instrument->setPrice('1150 €');
         $manager->persist($instrument);
         $manager->flush();
@@ -60,7 +60,7 @@ class InstrumentFixtures extends Fixture
         $instrument->setNoteNumber(12);
         $instrument->setMaterials('Ember');
         $instrument->setTuning('440Hz');
-        $instrument->setPicture('');
+        $instrument->setPicture(null);
         $instrument->setPrice('1380 €');
         $manager->persist($instrument);
         $manager->flush();

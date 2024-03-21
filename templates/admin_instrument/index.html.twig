@@ -2,48 +2,91 @@
 
 {% block title %}Instrument index{% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/controllers/search_controller.js') }}"></script>
+{% endblock %}
+
 {% block body %}
 <main class="column">
-    <h1 class="title">Instrument index</h1>
+    <div class="container">
 
-    <table class="table">
+    <h1 class="title titleAdmin">Instrument index</h1>
+
+    <input class="form-control mb-4" id="tableSearch" type="text"
+           placeholder=" recherche">
+
+    <table class="table table-bordered table-striped">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Materials</th>
-                <th>Tuning</th>
-                <th>Note_Number</th>
-                <th>Picture</th>
-                <th>Price</th>
-                <th>Status</th>
-                <th>actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Materials</th>
+            <th>Tuning</th>
+            <th>Note_Number</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Picture</th>
+            <th>actions</th>
+        </tr>
         </thead>
-        <tbody>
-        {% for instrument in instruments %}
-            <tr>
-                <td>{{ instrument.id }}</td>
-                <td>{{ instrument.Name }}</td>
-                <td>{{ instrument.Materials }}</td>
-                <td>{{ instrument.Tuning }}</td>
-                <td>{{ instrument.NoteNumber }}</td>
-                <td>{{ instrument.Picture }}</td>
-                <td>{{ instrument.Price }}</td>
-                <td>{{ instrument.Status }}</td>
-                <td>
-                    <a href="{{ path('app_admin_instrument_show', {'id': instrument.id}) }}">Vue</a>
-                    <a href="{{ path('app_admin_instrument_edit', {'id': instrument.id}) }}">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="9">no records found</td>
-            </tr>
-        {% endfor %}
+        <tbody id="myTable">
+            {% for instrument in instruments %}
+                <tr>
+                    <td>{{ instrument.id }}</td>
+                    <td>{{ instrument.Name }}</td>
+                    <td>{{ instrument.Materials }}</td>
+                    <td>{{ instrument.Tuning }}</td>
+                    <td>{{ instrument.NoteNumber }}</td>
+    {#                <td>{{ instrument.Picture }}</td>#}
+                    <td>{{ instrument.Price }}</td>
+                    <td>{{ instrument.Status }}</td>
+                    <td><img class="picturesList" src="{{ vich_uploader_asset(instrument) }}" alt="picture"></td>
+                    <td>
+                        <a href="{{ path('app_admin_instrument_show', {'id': instrument.id}) }}">Vue</a>
+                        <a href="{{ path('app_admin_instrument_edit', {'id': instrument.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="9">no records found</td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 
     <a href="{{ path('app_admin_instrument_new') }}">Ajouter un nouvel instrument</a>
+    </div>
 </main>
+
+    <script>
+        document.getElementById('tableSearch').addEventListener('input', function() {
+            var input, filter, table, tr, td, i, j, txtValue, found;
+            input = document.getElementById("tableSearch");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                found = false;
+                for (j = 0; j < tr[i].getElementsByTagName("td").length - 2; j++) { // Ignorer la dernière colonne (Message)
+                    td = tr[i].getElementsByTagName("td")[j];
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            found = true;
+                            break;
+                        }
+                    }
+                }
+                if (found) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        });
+    </script>
+
 {% endblock %}
+

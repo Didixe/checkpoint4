@@ -1,0 +1,55 @@
+.picturesBuy{
+  width: 20vw;
+  height: 20vw;
+}
+
+.blockPurchase {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  @media screen and (width > 572px) {
+    flex-direction: row;
+  }
+}
+
+.blockBuy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+  margin: 1rem;
+}
+
+.instrumentText {
+  font-weight: bolder;
+  text-align: left;
+  margin-left: -50%;
+}
+
+.picturesBuy {
+  width: 20vw;
+  height: 20vw;
+  margin: 1rem 0;
+}
+
+.instrumentPriceRight {
+  align-self: flex-end;
+  margin-top: auto;
+}
+
+.instrumentPrice {
+  font-size: larger;
+  font-weight: bolder;
+}
+
+p.instrumentName {
+  margin-bottom: 0;
+}
+
+.picturesList {
+  width: 2vw;
+  height: 2vw;
+  margin: 1rem 0;
+}

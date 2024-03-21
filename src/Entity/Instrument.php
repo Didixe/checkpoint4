@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\InstrumentRepository;
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
@@ -20,18 +22,22 @@ class Instrument
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Name = null;
+    #[Assert\NotBlank]
+    private ?string $name = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Materials = null;
+    #[Assert\NotBlank]
+    private ?string $materials = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Tuning = null;
+    #[Assert\NotBlank]
+    private ?string $tuning = null;
 
     #[ORM\Column]
-    private ?int $Note_Number = null;
+    #[Assert\NotBlank]
+    private ?int $note_Number = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $picture = null;
 
     #[Vich\UploadableField(mapping: 'picture', fileNameProperty: 'picture')]
@@ -42,16 +48,23 @@ class Instrument
     private ?\DateTimeInterface $updatedAt = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Price = null;
+    #[Assert\NotBlank]
+    private ?string $price = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Status = null;
+    private ?string $status = null;
 
-    #[ORM\ManyToOne(inversedBy: 'Instrument')]
-    private ?Rental $rental = null;
+    #[ORM\OneToMany(mappedBy: 'instrument', targetEntity: Rental::class)]
+    private Collection $rentals;
 
-    #[ORM\ManyToOne(inversedBy: 'Instrument')]
-    private ?Purchase $purchase = null;
+    #[ORM\OneToMany(mappedBy: 'instrument', targetEntity: Purchase::class)]
+    private Collection $purchases;
+
+    public function __construct()
+    {
+        $this->rentals = new ArrayCollection();
+        $this->purchases = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -60,48 +73,48 @@ class Instrument
 
     public function getName(): ?string
     {
-        return $this->Name;
+        return $this->name;
     }
 
-    public function setName(string $Name): static
+    public function setName(string $name): static
     {
-        $this->Name = $Name;
+        $this->name = $name;
 
         return $this;
     }
 
     public function getMaterials(): ?string
     {
-        return $this->Materials;
+        return $this->materials;
     }
 
-    public function setMaterials(string $Materials): static
+    public function setMaterials(string $materials): static
     {
-        $this->Materials = $Materials;
+        $this->materials = $materials;
 
         return $this;
     }
 
     public function getTuning(): ?string
     {
-        return $this->Tuning;
+        return $this->tuning;
     }
 
-    public function setTuning(string $Tuning): static
+    public function setTuning(string $tuning): static
     {
-        $this->Tuning = $Tuning;
+        $this->tuning = $tuning;
 
         return $this;
     }
 
     public function getNoteNumber(): ?int
     {
-        return $this->Note_Number;
+        return $this->note_Number;
     }
 
-    public function setNoteNumber(int $Note_Number): static
+    public function setNoteNumber(int $note_Number): static
     {
-        $this->Note_Number = $Note_Number;
+        $this->note_Number = $note_Number;
 
         return $this;
     }
@@ -111,7 +124,7 @@ class Instrument
         return $this->picture;
     }
 
-    public function setPicture(string $picture): static
+    public function setPicture(?string $picture): static
     {
         $this->picture = $picture;
 
@@ -123,7 +136,7 @@ class Instrument
         return $this->pictureFile;
     }
 
-    public function setPictureFile(File $image = null): static
+    public function setPictureFile(?File $image = null): static
     {
         $this->pictureFile = $image;
 
@@ -148,48 +161,84 @@ class Instrument
 
     public function getPrice(): ?string
     {
-        return $this->Price;
+        return $this->price;
     }
 
-    public function setPrice(string $Price): static
+    public function setPrice(string $price): static
     {
-        $this->Price = $Price;
+        $this->price = $price;
 
         return $this;
     }
 
     public function getStatus(): ?string
     {
-        return $this->Status;
+        return $this->status;
     }
 
-    public function setStatus(string $Status): static
+    public function setStatus(string $status): static
     {
-        $this->Status = $Status;
+        $this->status = $status;
 
         return $this;
     }
 
-    public function getRental(): ?Rental
+    /**
+     * @return Collection<int, Rental>
+     */
+    public function getRentals(): Collection
     {
-        return $this->rental;
+        return $this->rentals;
     }
 
-    public function setRental(?Rental $rental): static
+    public function addRental(Rental $rental): static
     {
-        $this->rental = $rental;
+        if (!$this->rentals->contains($rental)) {
+            $this->rentals->add($rental);
+            $rental->setInstrument($this);
+        }
 
         return $this;
     }
 
-    public function getPurchase(): ?Purchase
+    public function removeRental(Rental $rental): static
     {
-        return $this->purchase;
+        if ($this->rentals->removeElement($rental)) {
+            // set the owning side to null (unless already changed)
+            if ($rental->getInstrument() === $this) {
+                $rental->setInstrument(null);
+            }
+        }
+
+        return $this;
     }
 
-    public function setPurchase(?Purchase $purchase): static
+    /**
+     * @return Collection<int, Purchase>
+     */
+    public function getPurchases(): Collection
     {
-        $this->purchase = $purchase;
+        return $this->purchases;
+    }
+
+    public function addPurchase(Purchase $purchase): static
+    {
+        if (!$this->purchases->contains($purchase)) {
+            $this->purchases->add($purchase);
+            $purchase->setInstrument($this);
+        }
+
+        return $this;
+    }
+
+    public function removePurchase(Purchase $purchase): static
+    {
+        if ($this->purchases->removeElement($purchase)) {
+            // set the owning side to null (unless already changed)
+            if ($purchase->getInstrument() === $this) {
+                $purchase->setInstrument(null);
+            }
+        }
 
         return $this;
     }
