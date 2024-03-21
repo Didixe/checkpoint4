@@ -85,14 +85,6 @@ class InstrumentType extends AbstractType
                     'Autre' => 'Autre'
                 ],
             ])
-//            ->add('rental', EntityType::class, [
-//                'class' => Rental::class,
-//                'choice_label' => 'id',
-//            ])
-//            ->add('purchase', EntityType::class, [
-//                'class' => Purchase::class,
-//'choice_label' => 'id',
-//            ])
         ;
     }
 

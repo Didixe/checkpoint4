@@ -6,7 +6,6 @@ use App\Entity\Instrument;
 use App\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\HttpFoundation\Response;
 
 class InstrumentAdminPageTest extends WebTestCase
 {
